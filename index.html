@@ -117,6 +117,57 @@
       <div class="body-wrap">
         
   
+    <article id="post-memcpy-string" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/27/memcpy-string/">memcpy string类型导致的double free or corruption问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
+<p>原因是string是类，而对象不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两次，于是dump。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/27/memcpy-string/" class="archive-article-date">
+  	<time datetime="2016-10-27T10:13:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-27</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-chrome-flash" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -286,7 +337,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    				<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
     			</div>
     	</section>
     

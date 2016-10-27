@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Wanghy&#39;s Blog</title>
+  <title>memcpy string类型导致的double free or corruption问题 | Wanghy&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。
+原因是string是类，而对象不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/10/11/hello-world/index.html">
+<meta property="og:title" content="memcpy string类型导致的double free or corruption问题">
+<meta property="og:url" content="http://yoursite.com/2016/10/27/memcpy-string/index.html">
 <meta property="og:site_name" content="Wanghy's Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-10-27T07:53:36.348Z">
+<meta property="og:description" content="今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。
+原因是string是类，而对象不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放">
+<meta property="og:updated_time" content="2016-10-27T10:23:31.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="memcpy string类型导致的double free or corruption问题">
+<meta name="twitter:description" content="今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。
+原因是string是类，而对象不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放">
   
     <link rel="alternative" href="/atom.xml" title="Wanghy&#39;s Blog" type="application/atom+xml">
   
@@ -122,7 +122,7 @@ Quick">
 </nav>
 
       <div class="body-wrap">
-        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-memcpy-string" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -132,7 +132,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      memcpy string类型导致的double free or corruption问题
     </h1>
   
 
@@ -140,27 +140,20 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
+<p>原因是string是类，而对象不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两次，于是dump。</p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/10/11/hello-world/" class="archive-article-date">
-  	<time datetime="2016-10-11T09:50:50.871Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
+      <a href="/2016/10/27/memcpy-string/" class="archive-article-date">
+  	<time datetime="2016-10-27T10:13:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-27</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
 	</div>
 
       
@@ -173,15 +166,11 @@ Quick">
   
 <nav id="article-nav">
   
-    <a href="/2016/10/25/chrome-flash/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          chrome新版本提示flash player已过期解决办法
-        
-      </div>
-    </a>
   
+    <a href="/2016/10/25/chrome-flash/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">chrome新版本提示flash player已过期解决办法</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
