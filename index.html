@@ -71,7 +71,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github">github</a>
+					<a class="github" target="_blank" href="https://github.com/nateriver0007" title="github">github</a>
 		        
 			</div>
 		</nav>
@@ -106,7 +106,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github">github</a>
+						<a class="github" target="_blank" href="https://github.com/nateriver0007" title="github">github</a>
 			        
 				</div>
 			</nav>
@@ -116,6 +116,57 @@
 
       <div class="body-wrap">
         
+  
+    <article id="post-vim-replace" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/02/vim-replace/">vim替换常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vim的替换方法总是记不住，记录一些常用的在此，方便查找</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#替换当前行第一个 aaa 为 bbb </span></div><div class="line">:s/aaa/bbb/ </div><div class="line"><span class="comment">#替换当前行所有 aaa 为 bbb </span></div><div class="line">:s/aaa/bbb/g </div><div class="line"><span class="comment">#替换第 n 行开始到最后一行中每一行的第一个 aaa 为 bbb </span></div><div class="line">:n,<span class="variable">$s</span>/aaa/bbb/ </div><div class="line"><span class="comment">#替换第 n 行开始到最后一行中每一行所有 aaa 为 bbb</span></div><div class="line">:n,<span class="variable">$s</span>/aaa/bbb/g  </div><div class="line"><span class="comment">#（等同于 ：g/aaa/s//bbb/） 替换每一行的第一个 aaa 为 bbb </span></div><div class="line">:%s/aaa/sky/</div><div class="line"><span class="comment">#（等同于 ：g/aaa/s//bbb/g） 替换每一行中所有 aaa 为 bbb </span></div><div class="line">:%s/aaa/bbb/g</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/02/vim-replace/" class="archive-article-date">
+  	<time datetime="2016-11-02T05:49:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-memcpy-string" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -337,7 +388,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    				<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
     			</div>
     	</section>
     
