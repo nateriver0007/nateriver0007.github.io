@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。
-原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两">
+原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放">
 <meta property="og:type" content="article">
 <meta property="og:title" content="memcpy string类型导致的double free or corruption问题">
 <meta property="og:url" content="http://yoursite.com/2016/10/27/memcpy-string/index.html">
 <meta property="og:site_name" content="Wanghy's Blog">
 <meta property="og:description" content="今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。
-原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两">
+原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放">
 <meta property="og:updated_time" content="2016-10-27T10:28:56.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="memcpy string类型导致的double free or corruption问题">
 <meta name="twitter:description" content="今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。
-原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两">
+原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放">
 
 
 
@@ -280,7 +280,7 @@
       
 
       
-        <p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
 <p>原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两次，于是dump。</p>
 
       
@@ -401,7 +401,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

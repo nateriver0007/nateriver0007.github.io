@@ -574,7 +574,7 @@
       
         
           
-            <p>vim的替换方法总是记不住，记录一些常用的在此，方便查找</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>vim的替换方法总是记不住，记录一些常用的在此，方便查找</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#替换当前行第一个 aaa 为 bbb </span></div><div class="line">:s/aaa/bbb/ </div><div class="line"><span class="comment">#替换当前行所有 aaa 为 bbb </span></div><div class="line">:s/aaa/bbb/g </div><div class="line"><span class="comment">#替换第 n 行开始到最后一行中每一行的第一个 aaa 为 bbb </span></div><div class="line">:n,<span class="variable">$s</span>/aaa/bbb/ </div><div class="line"><span class="comment">#替换第 n 行开始到最后一行中每一行所有 aaa 为 bbb</span></div><div class="line">:n,<span class="variable">$s</span>/aaa/bbb/g  </div><div class="line"><span class="comment">#（等同于 ：g/aaa/s//bbb/） 替换每一行的第一个 aaa 为 bbb </span></div><div class="line">:%s/aaa/sky/</div><div class="line"><span class="comment">#（等同于 ：g/aaa/s//bbb/g） 替换每一行中所有 aaa 为 bbb </span></div><div class="line">:%s/aaa/bbb/g</div></pre></td></tr></table></figure>
 
           
@@ -669,7 +669,7 @@
       
         
           
-            <p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
 <p>原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两次，于是dump。</p>
 
           
@@ -764,7 +764,7 @@
       
         
           
-            <p>今天安装了chrome的最新版本，然后看视频的时候发现提示flash player已过期，找了半天的解决办法，发现google官方有给出解决方法。</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>今天安装了chrome的最新版本，然后看视频的时候发现提示flash player已过期，找了半天的解决办法，发现google官方有给出解决方法。</p>
 <p><a href="https://support.google.com/chrome/answer/6258784" target="_blank" rel="external">Adobe Flash 版本太旧，因此已被屏蔽</a></p>
 <p>按照文章中要求的做法，发现更新flash一直失败，最后发现更新这一步是需要翻墙的！我是用的shawdowsocks插件只能让网页翻墙，那么为了让更新程序也能够翻墙，只能给chrome指定代理了。在cmd里面执行chrome.exe，加上执行参数</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--proxy-server=<span class="string">"socks5://127.0.0.1:1080"</span></div></pre></td></tr></table></figure>
@@ -862,7 +862,7 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+            <script src="/assets/js/APlayer.min.js"> </script><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -950,7 +950,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
