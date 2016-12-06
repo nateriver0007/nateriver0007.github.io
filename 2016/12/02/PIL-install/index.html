@@ -94,7 +94,7 @@
 <meta property="og:description" content="今天安装PIL的时候提示错误“JPEG support not available”，第一反应是jpeg开发包没安装，然后yum install libjpeg-devel成功之后，依然报错。折腾了半天终于找到了解决办法。
 修改PIL安装包中的setup.py文件，手动指定libjpeg.so的位置
 1234567#这里默认都是NONE，改为对应库的位置TCL_ROOT = &quot;/usr/lib6">
-<meta property="og:updated_time" content="2016-12-02T08:38:24.946Z">
+<meta property="og:updated_time" content="2016-12-06T07:17:23.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PIL安装提示“JPEG support not available”解决办法">
 <meta name="twitter:description" content="今天安装PIL的时候提示错误“JPEG support not available”，第一反应是jpeg开发包没安装，然后yum install libjpeg-devel成功之后，依然报错。折腾了半天终于找到了解决办法。
@@ -287,6 +287,7 @@
 <p>修改PIL安装包中的setup.py文件，手动指定libjpeg.so的位置</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#这里默认都是NONE，改为对应库的位置</span></div><div class="line">TCL_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">JPEG_ROOT = <span class="string">"/usr/lib64/"</span></div><div class="line">ZLIB_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">TIFF_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">FREETYPE_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">LCMS_ROOT = <span class="string">"/usr/lib64"</span></div></pre></td></tr></table></figure>
 <p>重新安装PIL之后，解决问题</p>
+<p>另外直接使用pip安装PIL应该使用命令<code>pip install pillow</code></p>
 
       
     </div>
