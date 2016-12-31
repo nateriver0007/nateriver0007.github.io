@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,22 +84,12 @@
 
 
 
-<meta name="description" content="今天安装PIL的时候提示错误“JPEG support not available”，第一反应是jpeg开发包没安装，然后yum install libjpeg-devel成功之后，依然报错。折腾了半天终于找到了解决办法。
-修改PIL安装包中的setup.py文件，手动指定libjpeg.so的位置
-1234567#这里默认都是NONE，改为对应库的位置TCL_ROOT = &quot;/usr/lib6">
-<meta property="og:type" content="article">
-<meta property="og:title" content="PIL安装提示“JPEG support not available”解决办法">
-<meta property="og:url" content="http://yoursite.com/2016/12/02/PIL-install/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wanghy's Blog">
+<meta property="og:url" content="http://yoursite.com/tags/shell/index.html">
 <meta property="og:site_name" content="Wanghy's Blog">
-<meta property="og:description" content="今天安装PIL的时候提示错误“JPEG support not available”，第一反应是jpeg开发包没安装，然后yum install libjpeg-devel成功之后，依然报错。折腾了半天终于找到了解决办法。
-修改PIL安装包中的setup.py文件，手动指定libjpeg.so的位置
-1234567#这里默认都是NONE，改为对应库的位置TCL_ROOT = &quot;/usr/lib6">
-<meta property="og:updated_time" content="2016-12-06T07:17:23.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PIL安装提示“JPEG support not available”解决办法">
-<meta name="twitter:description" content="今天安装PIL的时候提示错误“JPEG support not available”，第一反应是jpeg开发包没安装，然后yum install libjpeg-devel成功之后，依然报错。折腾了半天终于找到了解决办法。
-修改PIL安装包中的setup.py文件，手动指定libjpeg.so的位置
-1234567#这里默认都是NONE，改为对应库的位置TCL_ROOT = &quot;/usr/lib6">
+<meta name="twitter:title" content="Wanghy's Blog">
 
 
 
@@ -120,10 +110,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/02/PIL-install/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/shell/"/>
 
 
-  <title> PIL安装提示“JPEG support not available”解决办法 | Wanghy's Blog </title>
+  <title> 标签: shell | Wanghy's Blog </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -144,7 +134,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -222,130 +212,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        shell
+        <small>标签</small>
+      </h2>
+    </div>
 
     
-      <header class="post-header">
+      
 
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2016/12/21/shell-count-word/" itemprop="url">
               
-                PIL安装提示“JPEG support not available”解决办法
+                <span itemprop="name">Linux使用Shell来统计英文文章中各个单词出现的次数</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-02T16:33:28+08:00" content="2016-12-02">
-              2016-12-02
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-12-21T18:33:17+08:00"
+              content="2016-12-21" >
+          12-21
+        </time>
+      </div>
 
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <script src="/assets/js/APlayer.min.js"> </script><p>今天安装PIL的时候提示错误“JPEG support not available”，第一反应是jpeg开发包没安装，然后<code>yum install libjpeg-devel</code>成功之后，依然报错。折腾了半天终于找到了解决办法。</p>
-<p>修改PIL安装包中的setup.py文件，手动指定libjpeg.so的位置</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#这里默认都是NONE，改为对应库的位置</span></div><div class="line">TCL_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">JPEG_ROOT = <span class="string">"/usr/lib64/"</span></div><div class="line">ZLIB_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">TIFF_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">FREETYPE_ROOT = <span class="string">"/usr/lib64"</span></div><div class="line">LCMS_ROOT = <span class="string">"/usr/lib64"</span></div></pre></td></tr></table></figure>
-<p>重新安装PIL之后，解决问题</p>
-<p>另外直接使用pip安装PIL应该使用命令<code>pip install pillow</code></p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag">#python</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/15/music-add/" rel="next" title="hexo文章中加入网易云音乐">
-                <i class="fa fa-chevron-left"></i> hexo文章中加入网易云音乐
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/15/leetcode-single-num/" rel="prev" title="leetcode问题Single Num系列问题">
-                leetcode问题Single Num系列问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -353,10 +259,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -376,17 +278,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -429,17 +322,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -543,10 +425,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
 
   
 
