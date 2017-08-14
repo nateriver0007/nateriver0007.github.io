@@ -236,6 +236,211 @@
             
               
                 
+                <a class="post-title-link" href="/2017/08/10/thread-pthread-problem/" itemprop="url">
+                  面试问题汇总：多进程和多线程相关
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-10T09:42:26+08:00" content="2017-08-10">
+              2017-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h1><h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><h3 id="进程间通信方式"><a href="#进程间通信方式" class="headerlink" title="进程间通信方式"></a>进程间通信方式</h3><ul>
+<li>管道( pipe )：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。</li>
+<li>有名管道 (named pipe) ： 有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</li>
+<li>信号量( semophore ) ： 信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</li>
+<li>消息队列( message queue ) ： 消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
+<li>信号 ( sinal ) ： 信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。</li>
+<li>共享内存( shared memory ) ：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号两，配合使用，来实现进程间的同步和通信。</li>
+<li>套接字( socket ) ： 套解口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同及其间的进程通信</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/08/10/thread-pthread-problem/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/12/browser-request/" itemprop="url">
+                  在浏览器中输入一个网址后，发生了什么？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-12T14:43:46+08:00" content="2017-03-12">
+              2017-03-12
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>面试中一道非常经典的问题。</p>
+<p>在浏览器中输入一个网址，浏览器的处理过程如下：</p>
+<h2 id="1-浏览器查找域名IP"><a href="#1-浏览器查找域名IP" class="headerlink" title="1. 浏览器查找域名IP"></a>1. 浏览器查找域名IP</h2><p>浏览器首先是查找浏览器缓存,浏览器会缓存DNS记录一段时间，不同浏览器保存的时常不等（2分钟到30分钟不等）。 如果在浏览器缓存里没有找到需要的记录，浏览器会做一个系统调用来查找这个网址的对应DNS信息。 如果在系统缓存里没有找到找到对应的IP，请求会发向路由器，它一般会有自己的DNS缓存。 如果在路由器缓存里还是没有对应的IP，请求会被发送到ISP。 如果还是没有，请求将发向根域名服务器进行搜索。找不到就说明此域名不存在。</p>
+<p>域名解析服务器是基于UDP协议实现的一个应用程序，通常通过监听53端口来获取客户端的域名解析请求。</p>
+<h2 id="2-浏览器发送HTTP请求"><a href="#2-浏览器发送HTTP请求" class="headerlink" title="2. 浏览器发送HTTP请求"></a>2. 浏览器发送HTTP请求</h2><p>浏览器通过DNS获取到web服务器真的IP地址后，便向web服务器发起tcp连接请求，通过TCP三次握手建立好连接后，浏览器便可以将HTTP请求数据通过发送给服务器了。</p>
+<h2 id="3-服务器返回响应"><a href="#3-服务器返回响应" class="headerlink" title="3. 服务器返回响应"></a>3. 服务器返回响应</h2><p>与客户端建立好TCP连接后，web服务器开始接受客户端发来的数据，并通过HTTP解码，从接受到的网络数据中解析出请求的url信息以前其他诸如Accept-Encoding、Accept-Language等信息。</p>
+<p>Web服务器根据HTTP请求头的信息，得到响应数据返回给客户端。</p>
+<h2 id="4-浏览器渲染并显示"><a href="#4-浏览器渲染并显示" class="headerlink" title="4. 浏览器渲染并显示"></a>4. 浏览器渲染并显示</h2><p>浏览器会接收到服务器返回来的数据，格式为html，浏览器对数据进行解析和渲染，并显示出来。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/21/shell-count-word/" itemprop="url">
                   Linux使用Shell来统计英文文章中各个单词出现的次数
                 </a>
@@ -997,196 +1202,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/02/vim-replace/" itemprop="url">
-                  vim替换常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T13:49:25+08:00" content="2016-11-02">
-              2016-11-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>vim的替换方法总是记不住，记录一些常用的在此，方便查找</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#替换当前行第一个 aaa 为 bbb </span></div><div class="line">:s/aaa/bbb/ </div><div class="line"><span class="comment">#替换当前行所有 aaa 为 bbb </span></div><div class="line">:s/aaa/bbb/g </div><div class="line"><span class="comment">#替换第 n 行开始到最后一行中每一行的第一个 aaa 为 bbb </span></div><div class="line">:n,<span class="variable">$s</span>/aaa/bbb/ </div><div class="line"><span class="comment">#替换第 n 行开始到最后一行中每一行所有 aaa 为 bbb</span></div><div class="line">:n,<span class="variable">$s</span>/aaa/bbb/g  </div><div class="line"><span class="comment">#（等同于 ：g/aaa/s//bbb/） 替换每一行的第一个 aaa 为 bbb </span></div><div class="line">:%s/aaa/sky/</div><div class="line"><span class="comment">#（等同于 ：g/aaa/s//bbb/g） 替换每一行中所有 aaa 为 bbb </span></div><div class="line">:%s/aaa/bbb/g</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/27/memcpy-string/" itemprop="url">
-                  memcpy string类型导致的double free or corruption问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-27T18:13:28+08:00" content="2016-10-27">
-              2016-10-27
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script src="/assets/js/APlayer.min.js"> </script><p>今天跑程序的时候发现出现了double free的问题，看了下代码，并没有free的地方，查了很久，最后发现是因为结构体中有string类型的成员，然后在复制的时候使用了memcpy所导致。</p>
-<p>原因是string是类，而类不能使用memcpy来拷贝，memcpy是浅拷贝，拷贝后，其指针指向所存放的字符串存放地址与被拷贝的对象是相同的。程序结束的时候，两者分别析构，由于指向同一字符串内存，该内存释放两次，于是dump。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1232,7 +1247,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1242,7 +1257,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1279,7 +1294,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
