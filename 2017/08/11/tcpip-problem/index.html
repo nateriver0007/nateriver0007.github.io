@@ -1,0 +1,672 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="TCP/IP,HTTP,FTP,网络协议," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="OSI参考模型物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
+与OSI参考模型的对应关系应用层对应OSI的会话层、表示层和应用层
+传输层对应OSI的传输层
+网际互联层对应OSI的网络层
+网络接入层对于OSI的物理层、数据链路层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试问题汇总：网络协议相关">
+<meta property="og:url" content="http://yoursite.com/2017/08/11/tcpip-problem/index.html">
+<meta property="og:site_name" content="Wanghy's Blog">
+<meta property="og:description" content="OSI参考模型物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
+与OSI参考模型的对应关系应用层对应OSI的会话层、表示层和应用层
+传输层对应OSI的传输层
+网际互联层对应OSI的网络层
+网络接入层对于OSI的物理层、数据链路层">
+<meta property="og:image" content="http://yoursite.com/../images/normal_content_length.png">
+<meta property="og:image" content="http://yoursite.com/../images/chunked_code.png">
+<meta property="og:updated_time" content="2017-08-14T08:50:01.389Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试问题汇总：网络协议相关">
+<meta name="twitter:description" content="OSI参考模型物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
+与OSI参考模型的对应关系应用层对应OSI的会话层、表示层和应用层
+传输层对应OSI的传输层
+网际互联层对应OSI的网络层
+网络接入层对于OSI的物理层、数据链路层">
+<meta name="twitter:image" content="http://yoursite.com/../images/normal_content_length.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/11/tcpip-problem/"/>
+
+
+  <title> 面试问题汇总：网络协议相关 | Wanghy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wanghy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Keep Moving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试问题汇总：网络协议相关
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-11T15:09:02+08:00" content="2017-08-11">
+              2017-08-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>物理层、数据链路层、网络层、传输层、会话层、表示层和应用层</p>
+<h2 id="TCP-IP-参考模型"><a href="#TCP-IP-参考模型" class="headerlink" title="TCP/IP 参考模型"></a>TCP/IP 参考模型</h2><p>网络访问层、网际互联层、传输层、和应用层</p>
+<h3 id="与OSI参考模型的对应关系"><a href="#与OSI参考模型的对应关系" class="headerlink" title="与OSI参考模型的对应关系"></a>与OSI参考模型的对应关系</h3><p>应用层对应OSI的会话层、表示层和应用层</p>
+<p>传输层对应OSI的传输层</p>
+<p>网际互联层对应OSI的网络层</p>
+<p>网络接入层对于OSI的物理层、数据链路层</p>
+<a id="more"></a>
+<h1 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h1><h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><ol>
+<li>第一次握手：建立连接时，客户端发送syn包(syn=j)到服务器，并进入SYN_SENT状态，等待服务器确认；SYN:同步序列号</li>
+<li>第二次握手：服务器收到syn包，必须确认客户端的SYN(ACK=j+1)，同时自己也发送一个SYN包(syn=k)，即SYN+ACK包，此时服务器进入SYN_RECV状态</li>
+<li>第三次握手：客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ACK=k+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手</li>
+</ol>
+<h3 id="握手过程中各状态"><a href="#握手过程中各状态" class="headerlink" title="握手过程中各状态"></a>握手过程中各状态</h3><p><strong>LISTEN</strong>: 这个也是非常容易理解的一个状态，表示服务器端的某个SOCKET处于监听状态，可以接受连接了。</p>
+<p><strong>SYN_SENT</strong>: 当客户端SOCKET执行CONNECT连接时，它首先发送SYN报文，因此也随即它会进入到了SYN_SENT状态，并等待服务端的发送三次握手中的第2个报文。SYN_SENT状态表示客户端已发送SYN报文。(发送端)</p>
+<p><strong>SYN_RCVD</strong>: 这个状态与SYN_SENT遥想呼应这个状态表示接受到了SYN报文，在正常情况下，这个状态是服务器端的SOCKET在建立TCP连接时的三次握手会话过程中的一个中间状态，很短暂，基本上用netstat你是很难看到这种状态的，除非你特意写了一个客户端测试程序，故意将三次TCP握手过程中最后一个ACK报文不予发送。因此这种状态时，当收到客户端的ACK报文后，它会进入到ESTABLISHED状态。(服务器端)</p>
+<p><strong>ESTABLISHED</strong>：这个容易理解了，表示连接已经建立了。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><ol>
+<li>当主机A的应用程序通知TCP数据已经发送完毕时，TCP向主机B发送一个带有FIN附加标记的报文段（FIN表示英文finish）。</li>
+<li>主机B收到这个FIN报文段之后，并不立即用FIN报文段回复主机A，而是先向主机A发送一个确认序号ACK，同时通知自己相应的应用程序：对方要求关闭连接（先发送ACK的目的是为了防止在这段时间内，对方重传FIN报文段）</li>
+<li>主机B的应用程序告诉TCP：我要彻底的关闭连接，TCP向主机A送一个FIN报文段。</li>
+<li>主机A收到这个FIN报文段后，向主机B发送一个ACK表示连接彻底释放</li>
+</ol>
+<h3 id="挥手过程中各状态"><a href="#挥手过程中各状态" class="headerlink" title="挥手过程中各状态"></a>挥手过程中各状态</h3><p><strong>FIN_WAIT_1</strong>:  这个状态要好好解释一下，其实FIN_WAIT_1和FIN_WAIT_2状态的真正含义都是表示等待对方的FIN报文。而这两种状态的区别是：FIN_WAIT_1状态实际上是当SOCKET在ESTABLISHED状态时，它想主动关闭连接，向对方发送了FIN报文，此时该SOCKET即进入到FIN_WAIT_1状态。而当对方回应ACK报文后，则进入到FIN_WAIT_2状态，当然在实际的正常情况下，无论对方何种情况下，都应该马上回应ACK报文，所以FIN_WAIT_1状态一般是比较难见到的，而FIN_WAIT_2状态还有时常常可以用netstat看到。(主动方)</p>
+<p><strong>FIN_WAIT_2</strong>：上面已经详细解释了这种状态，实际上FIN_WAIT_2状态下的SOCKET，表示半连接，也即有一方要求close连接，但另外还告诉对方，我暂时还有点数据需要传送给你(ACK信息)，稍后再关闭连接。(主动方)</p>
+<p><strong>TIME_WAIT</strong>: 表示收到了对方的FIN报文，并发送出了ACK报文，就等2MSL后即可回到CLOSED可用状态了。如果FIN_WAIT_1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIME_WAIT状态，而无须经过FIN_WAIT_2状态。(主动方)</p>
+<p><strong>CLOSING</strong>(比较少见): 这种状态比较特殊，实际情况中应该是很少见，属于一种比较罕见的例外状态。正常情况下，当你发送FIN报文后，按理来说是应该先收到(或同时收到)对方的ACK报文，再收到对方的FIN报文。但是CLOSING状态表示你发送FIN报文后，并没有收到对方的ACK报文，反而却也收到了对方的FIN报文。什么情况下会出现此种情况呢?其实细想一下，也不难得出结论：那就是如果双方几乎在同时close一个SOCKET的话，那么就出现了双方同时发送FIN报文的情况，也即会出现CLOSING状态，表示双方都正在关闭SOCKET连接。</p>
+<p><strong>CLOSE_WAIT</strong>: 这种状态的含义其实是表示在等待关闭。怎么理解呢?当对方close一个SOCKET后发送FIN报文给自己，你系统毫无疑问地会回应一个ACK报文给对方，此时则进入到CLOSE_WAIT状态。接下来呢，实际上你真正需要考虑的事情是察看你是否还有数据发送给对方，如果没有的话，那么你也就可以close这个SOCKET，发送FIN报文给对方，也即关闭连接。所以你在CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。(被动方)</p>
+<p><strong>LAST_ACK</strong>: 这个状态还是比较容易好理解的，它是被动关闭一方在发送FIN报文后，最后等待对方的ACK报文。当收到ACK报文后，也即可以进入到CLOSED可用状态了。(被动方)</p>
+<h2 id="TCP乱序重组"><a href="#TCP乱序重组" class="headerlink" title="TCP乱序重组"></a>TCP乱序重组</h2><p>TCP具有乱序重组的功能。<br>（1）TCP具有缓冲区<br>（2）TCP报文具有序列号<br>所以，一种常见的处理方式是：TCP会先将报文段3缓存下来，当报文段2到达时，再根据序列号进行拼接。<br>当然缓冲区也有满的时候，这时接收端会直接丢弃报文，不做任何其他处理；<br>发送方的定时器发现迟迟收不到接收方丢弃报文的确认号（ack number），就会重传该报文。这就是TCP的超时重传功能</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><h3 id="chunked编码"><a href="#chunked编码" class="headerlink" title="chunked编码"></a>chunked编码</h3><p> 一般情况HTTP的Header包含Content-Length域来指明报文体的长度，如：</p>
+<p><img src="../images/normal_content_length.png" alt=""></p>
+<p>有时候服务生成HTTP回应是无法确定消息大小的，比如大文件的下载，或者后台需要复杂的逻辑才能全部处理页面的请求，这时用需要实时生成消息长度，服务器一般使用chunked编码。</p>
+<p>在进行Chunked编码传输时，在回复消息的Headers有transfer-coding域值为chunked，表示将用chunked编码传输内容。使用chunked编码的Headers如下:</p>
+<p><img src="../images/chunked_code.png" alt=""></p>
+<p>Web服务器有时生成HTTPResponse无法在Header就确定消息大小的，这时一般来说服务器将不会提供Content-Length的头信息，而采用Chunked编码动态的提供body内容的长度。</p>
+<p>进行Chunked编码传输的HTTP Response会在消息头部设置：Transfer-Encoding: chunked</p>
+<p>表示Content Body将用Chunked编码传输内容</p>
+<p>Chunked编码使用若干个Chunk串连而成，由一个标明长度为0的chunk标示结束。每个Chunk分为头部和正文两部分，头部内容指定下一段正文的字符总数（十六进制的数字）和数量单位（一般不写），正文部分就是指定长度的实际内容，两部分之间用回车换行(CRLF)隔开。在最后一个长度为0的Chunk中的内容是称为footer的内容，是一些附加的Header信息（通常可以直接忽略）。</p>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><p>滑动窗口协议是用来改善吞吐量的一种技术，即容许发送方在接收任何应答之前传送附加的包。接收方告诉发送方在某一时刻能送多少包（称窗口尺寸）</p>
+<p>TCP中采用滑动窗口来进行传输控制，滑动窗口的大小意味着接收方还有多大的缓冲区可以用于接收数据。发送方可以通过滑动窗口的大小来确定应该发送多少字节的数据。当滑动窗口为0时，发送方一般不能再发送数据报，但有两种情况除外，一种情况是可以发送紧急数据，例如，允许用户终止在远端机上的运行进程。另一种情况是发送方可以发送一个1字节的数据报来通知接收方重新声明它希望接收的下一字节及发送方的滑动窗口大小。</p>
+<p>滑动窗口协议的基本原理就是在任意时刻，发送方都维持了一个连续的允许发送的帧的序号，称为发送窗口；同时，接收方也维持了一个连续的允许接收的帧的序号，称为接收窗口。发送窗口和接收窗口的序号的上下界不一定要一样，甚至大小也可以不同。不同的滑动窗口协议窗口大小一般不同。发送方窗口内的序列号代表了那些已经被发送，但是还没有被确认的帧，或者是那些可以被发送的帧。</p>
+<h3 id="HTTP断点续传原理"><a href="#HTTP断点续传原理" class="headerlink" title="HTTP断点续传原理"></a>HTTP断点续传原理</h3><p>HTTP1.1协议（RFC2616）中定义了断点续传相关的HTTP头 Range和Content-Range字段，一个最简单的断点续传实现大概如下： </p>
+<ol>
+<li><p>客户端下载一个1024K的文件，已经下载了其中512K </p>
+<ol>
+<li>网络中断，客户端请求续传，因此需要在HTTP头中申明本次需要续传的片段：<br>Range:bytes=512000- ，这个头通知服务端从文件的512K位置开始传输文件 </li>
+<li>服务端收到断点续传请求，从文件的512K位置开始传输，并且在HTTP头中增加：<br>Content-Range:bytes 512000-/1024000<br>并且此时服务端返回的HTTP状态码应该是206，而不是200。 </li>
+</ol>
+</li>
+</ol>
+<h4 id="续传时服务器源文件已经发生修改"><a href="#续传时服务器源文件已经发生修改" class="headerlink" title="续传时服务器源文件已经发生修改"></a>续传时服务器源文件已经发生修改</h4><p>实际场景中，会出现一种情况，即在终端发起续传请求时，URL对应的文件内容在服务端已经发生变化，此时续传的数据肯定是错误的。显然此时我们需要有一个标识文件唯一性的方法。在RFC2616中也有相应的定义，比如实现Last-Modified来标识文件的最后修改时间，这样即可判断出续传文件时是否已经发生过改动。同时RFC2616中还定义有一个ETag的头，可以使用ETag头来放置文件的唯一标识，比如文件的MD5值。</p>
+<p>终端在发起续传请求时应该在HTTP头中申明If-Match 或者If-Modified-Since 字段，帮助服务端判别文件变化。 </p>
+<p>另外RFC2616中同时定义有一个If-Range头，终端如果在续传是使用If-Range。If-Range中的内容可以为最初收到的ETag头或者是Last-Modfied中的最后修改时候。服务端在收到续传请求时，通过If-Range中的内容进行校验，校验一致时返回206的续传回应，不一致时服务端则返回200回应，回应的内容为新的文件的全部数据。</p>
+<h3 id="HTTP2-0与HTTP1-1的区别"><a href="#HTTP2-0与HTTP1-1的区别" class="headerlink" title="HTTP2.0与HTTP1.1的区别"></a>HTTP2.0与HTTP1.1的区别</h3><ol>
+<li>HTTP/2采用二进制格式而非文本格式</li>
+<li>HTTP/2是完全多路复用的，而非有序并阻塞的——只需一个连接即可实现并行</li>
+<li>使用报头压缩，HTTP/2降低了开销</li>
+<li>HTTP/2让服务器可以将响应主动“推送”到客户端缓存中</li>
+</ol>
+<p>大幅度的提升了 web 性能。在与 HTTP/1.1 完全语义兼容的基础上，进一步减少了网络延迟</p>
+<h3 id="常用HTTP方法"><a href="#常用HTTP方法" class="headerlink" title="常用HTTP方法"></a>常用HTTP方法</h3><p><strong>GET： </strong>用于请求访问已经被URI（统一资源标识符）识别的资源，可以通过URL传参给服务器<br><strong>POST：</strong>用于传输信息给服务器，主要功能与GET方法类似，但一般推荐使用POST方式。<br><strong>PUT： </strong>传输文件，报文主体中包含文件内容，保存到对应URI位置。<br><strong>HEAD： </strong>获得报文首部，与GET方法类似，只是不返回报文主体，一般用于验证URI是否有效。<br><strong>DELETE：</strong>删除文件，与PUT方法相反，删除对应URI位置的文件。<br><strong>OPTIONS：</strong>查询相应URI支持的HTTP方法。</p>
+<h3 id="GET方法与POST方法区别"><a href="#GET方法与POST方法区别" class="headerlink" title="GET方法与POST方法区别"></a>GET方法与POST方法区别</h3><p><strong>区别一：</strong><br>get重点在从服务器上获取资源，post重点在向服务器发送数据；<br><strong>区别二：</strong><br>get传输数据是通过URL请求，以field（字段）= value的形式，置于URL后，并用”?”连接，多个请求数据间用”&amp;”连接，如<a href="http://127.0.0.1/Test/login.action?name=admin&amp;password=admin，这个过程用户是可见的；" target="_blank" rel="external">http://127.0.0.1/Test/login.action?name=admin&amp;password=admin，这个过程用户是可见的；</a><br>post传输数据通过Http的post机制，将字段与对应值封存在请求实体中发送给服务器，这个过程对用户是不可见的；<br><strong>区别三：</strong><br>Get传输的数据量小，因为受URL长度限制，但效率较高；<br>Post可以传输大量数据，所以上传文件时只能用Post方式；<br><strong>区别四：</strong><br>get是不安全的，因为URL是可见的，可能会泄露私密信息，如密码等；<br>post较get安全性较高；<br><strong>区别五：</strong><br>get方式只能支持ASCII字符，向服务器传的中文字符可能会乱码。<br>post支持标准字符集，可以正确传递中文字符。</p>
+<h2 id="FTP协议"><a href="#FTP协议" class="headerlink" title="FTP协议"></a>FTP协议</h2><p>FTP是仅基于TCP的服务，不支持UDP。与众不同的是FTP使用2个端口，一个数据端口和一个命令端口（也可叫做控制端口）。通常来说这两个端口是21（命令端口）和20（数据端口）。但FTP工作方式的不同，数据端口并不总是20。这就是主动与被动FTP的最大不同之处。</p>
+<h3 id="主动模式"><a href="#主动模式" class="headerlink" title="主动模式"></a>主动模式</h3><p>主动模式下，FTP客户端从任意的非特殊的端口（N &gt; 1023）连入到FTP服务器的命令端口–21端口。然后客户端在N+1（N+1 &gt;= 1024）端口监听，并且通过N+1（N+1 &gt;= 1024）端口发送命令给FTP服务器。服务器会反过来连接用户本地指定的数据端口，比如20端口。</p>
+<p>　　以服务器端防火墙为立足点，要支持主动模式FTP需要打开如下交互中使用到的端口：</p>
+<ul>
+<li>FTP服务器命令（21）端口接受客户端任意端口（客户端初始连接）</li>
+<li>FTP服务器命令（21）端口到客户端端口（&gt;1023）（服务器响应客户端命令）</li>
+<li>FTP服务器数据（20）端口到客户端端口（&gt;1023）（服务器初始化数据连接到客户端数据端口）</li>
+<li>FTP服务器数据（20）端口接受客户端端口（&gt;1023）（客户端发送ACK包到服务器的数据端口）</li>
+</ul>
+<p>主动方式FTP的主要问题实际上在于客户端。FTP的客户端并没有实际建立一个到服务器数据端口的连接，它只是简单的告诉服务器自己监听的端口号，服务器再回来连接客户端这个指定的端口。对于客户端的防火墙来说，这是从外部系统建立到内部客户端的连接，这是通常会被阻塞的。</p>
+<h3 id="被动模式"><a href="#被动模式" class="headerlink" title="被动模式"></a>被动模式</h3><p>为了解决服务器发起到客户的连接的问题，人们开发了一种不同的FTP连接方式。这就是所谓的被动方式，或者叫做PASV，当客户端通知服务器它处于被动模式时才启用。</p>
+<p>　　在被动方式FTP中，命令连接和数据连接都由客户端，这样就可以解决从服务器到客户端的数据端口的入方向连接被防火墙过滤掉的问题。当开启一个FTP连接时，客户端打开两个任意的非特权本地端口（N &gt;; 1024和N+1）。第一个端口连接服务器的21端口，但与主动方式的FTP不同，客户端不会提交PORT命令并允许服务器来回连它的数据端口，而是提交PASV命令。这样做的结果是服务器会开启一个任意的非特权端口（P &gt;; 1024），并发送PORT P命令给客户端。然后客户端发起从本地端口N+1到服务器的端口P的连接用来传送数据。</p>
+<p>　　对于服务器端的防火墙来说，必须允许下面的通讯才能支持被动方式的FTP:</p>
+<ul>
+<li>FTP服务器命令（21）端口接受客户端任意端口（客户端初始连接）</li>
+<li>FTP服务器命令（21）端口到客户端端口（&gt;1023）（服务器响应客户端命令）</li>
+<li>FTP服务器数据端口（&gt;1023）接受客户端端口（&gt;1023）（客户端初始化数据连接到服务器指定的任意端口）</li>
+<li>FTP服务器数据端口（&gt;1023）到客户端端口（&gt;1023）（服务器发送ACK响应和数据到客户端的数据端口）</li>
+</ul>
+<h3 id="主动模式与被动模式区别总结"><a href="#主动模式与被动模式区别总结" class="headerlink" title="主动模式与被动模式区别总结"></a>主动模式与被动模式区别总结</h3><p>主动模式：server把数据写到client上面 （server从server的20端口把数据写到client开的端口上）</p>
+<p>被动模式：client去server端把数据取回来 （client要求server开一个端口，然后client从那个端口把数据取回来）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TCP-IP/" rel="tag">#TCP/IP</a>
+          
+            <a href="/tags/HTTP/" rel="tag">#HTTP</a>
+          
+            <a href="/tags/FTP/" rel="tag">#FTP</a>
+          
+            <a href="/tags/网络协议/" rel="tag">#网络协议</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/10/thread-pthread-problem/" rel="next" title="面试问题汇总：多进程和多线程相关">
+                <i class="fa fa-chevron-left"></i> 面试问题汇总：多进程和多线程相关
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Wanghy" />
+          <p class="site-author-name" itemprop="name">Wanghy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">1.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-参考模型"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP 参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与OSI参考模型的对应关系"><span class="nav-number">2.1.</span> <span class="nav-text">与OSI参考模型的对应关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP协议"><span class="nav-number"></span> <span class="nav-text">TCP/IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">1.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#握手过程中各状态"><span class="nav-number">1.1.</span> <span class="nav-text">握手过程中各状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">2.</span> <span class="nav-text">四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挥手过程中各状态"><span class="nav-number">2.1.</span> <span class="nav-text">挥手过程中各状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP乱序重组"><span class="nav-number">3.</span> <span class="nav-text">TCP乱序重组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议"><span class="nav-number">4.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chunked编码"><span class="nav-number">4.1.</span> <span class="nav-text">chunked编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口"><span class="nav-number">4.2.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP断点续传原理"><span class="nav-number">4.3.</span> <span class="nav-text">HTTP断点续传原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#续传时服务器源文件已经发生修改"><span class="nav-number">4.3.1.</span> <span class="nav-text">续传时服务器源文件已经发生修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP2-0与HTTP1-1的区别"><span class="nav-number">4.4.</span> <span class="nav-text">HTTP2.0与HTTP1.1的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HTTP方法"><span class="nav-number">4.5.</span> <span class="nav-text">常用HTTP方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET方法与POST方法区别"><span class="nav-number">4.6.</span> <span class="nav-text">GET方法与POST方法区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP协议"><span class="nav-number">5.</span> <span class="nav-text">FTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主动模式"><span class="nav-number">5.1.</span> <span class="nav-text">主动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">5.2.</span> <span class="nav-text">被动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主动模式与被动模式区别总结"><span class="nav-number">5.3.</span> <span class="nav-text">主动模式与被动模式区别总结</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wanghy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
