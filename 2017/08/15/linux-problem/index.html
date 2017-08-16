@@ -1,0 +1,670 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="面试,linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Linux操作系统软链接和硬链接
+硬链接： 与普通文件没什么不同，inode都指向同一个文件在硬盘中的区块
+软链接： 保存了其代表的文件的绝对路径，是另外一种文件，在硬盘上有独立的区块，访问时替换自身路径。
+
+/etc/fstab文件fstab包含了你的电脑上的存储设备及其文件系统的信息。它是决定一个硬盘（分区）被怎样使用或者说整合到整个系统中的唯一文件。
+这个文件的全路径是/etc/fstab。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试问题汇总：Linux相关">
+<meta property="og:url" content="http://yoursite.com/2017/08/15/linux-problem/index.html">
+<meta property="og:site_name" content="Wanghy's Blog">
+<meta property="og:description" content="Linux操作系统软链接和硬链接
+硬链接： 与普通文件没什么不同，inode都指向同一个文件在硬盘中的区块
+软链接： 保存了其代表的文件的绝对路径，是另外一种文件，在硬盘上有独立的区块，访问时替换自身路径。
+
+/etc/fstab文件fstab包含了你的电脑上的存储设备及其文件系统的信息。它是决定一个硬盘（分区）被怎样使用或者说整合到整个系统中的唯一文件。
+这个文件的全路径是/etc/fstab。">
+<meta property="og:updated_time" content="2017-08-15T11:26:58.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试问题汇总：Linux相关">
+<meta name="twitter:description" content="Linux操作系统软链接和硬链接
+硬链接： 与普通文件没什么不同，inode都指向同一个文件在硬盘中的区块
+软链接： 保存了其代表的文件的绝对路径，是另外一种文件，在硬盘上有独立的区块，访问时替换自身路径。
+
+/etc/fstab文件fstab包含了你的电脑上的存储设备及其文件系统的信息。它是决定一个硬盘（分区）被怎样使用或者说整合到整个系统中的唯一文件。
+这个文件的全路径是/etc/fstab。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/15/linux-problem/"/>
+
+
+  <title> 面试问题汇总：Linux相关 | Wanghy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wanghy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Keep Moving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试问题汇总：Linux相关
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-15T14:39:07+08:00" content="2017-08-15">
+              2017-08-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="Linux操作系统"><a href="#Linux操作系统" class="headerlink" title="Linux操作系统"></a>Linux操作系统</h1><h2 id="软链接和硬链接"><a href="#软链接和硬链接" class="headerlink" title="软链接和硬链接"></a>软链接和硬链接</h2><ul>
+<li>硬链接： 与普通文件没什么不同，inode都指向同一个文件在硬盘中的区块</li>
+<li>软链接： 保存了其代表的文件的绝对路径，是另外一种文件，在硬盘上有独立的区块，访问时替换自身路径。</li>
+</ul>
+<h2 id="etc-fstab"><a href="#etc-fstab" class="headerlink" title="/etc/fstab"></a>/etc/fstab</h2><p>文件fstab包含了你的电脑上的存储设备及其文件系统的信息。它是决定一个硬盘（分区）被怎样使用或者说整合到整个系统中的唯一文件。</p>
+<p>这个文件的全路径是/etc/fstab。它只是一个文本文件，你能够用你喜欢的编辑器打开它，但是必须是root用户才能编辑它。同时fsck、mount、umount的等命令都利用该程序。</p>
+<p>具体来说：用fstab可以自动挂载各种文件系统格式的硬盘、分区、可移动设备和远程设备等。对于Windows与arch双操作系统用户，用fstab挂载FAT格式和NTFS格式的分区，可以在Linux中共享windows系统下的资源。</p>
+<a id="more"></a>
+<h2 id="SUID，SGID和SBIT"><a href="#SUID，SGID和SBIT" class="headerlink" title="SUID，SGID和SBIT"></a>SUID，SGID和SBIT</h2><p>SUID是Set UID的简称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -l /usr/bin/passwd</div><div class="line">-rwsr-xr-x 1 root root 42824 Sep 13  2012 /usr/bin/passwd</div></pre></td></tr></table></figure>
+<p>可以看到，在文件拥有者的执行位上出现为s而不是x,所以说passwd这个程序是具有SUID权限的</p>
+<p>SGID即Set GID的缩写，它出现在文件所属组权限的执行位上面，它对普通二进制文件和目录都有效。当它作用于普通文件时，和SUID类似，在执行该文件时，用户将获得该文件所属组的权限。当SGID作用于目录时，意义就非常重大了。当用户对某一目录有写和执行权限时，该用户就可以在该目录下建立文件，如果该目录用SGID修饰，则该用户在这个目录下建立的文件都是属于这个目录所属的组</p>
+<p> SBIT即Sticky Bit，它出现在其他用户权限的执行位上，它只能用来修饰一个目录。当某一个目录拥有SBIT权限时，则任何一个能够在这个目录下建立文件的用户，该用户在这个目录下所建立的文件，只有该用户自己和root可以删除，其他用户均不可以。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -ld /tmp  </div><div class="line">drwxrwxrwt 12 root root 12288 Dec 17 16:33 /tmp</div></pre></td></tr></table></figure>
+<p>可以看到最后一位为t，这说明/tmp文件就是这种文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">4表示SUID  </div><div class="line">2表示SGID  </div><div class="line">1表示SBIT</div><div class="line">chmod 4777 test</div><div class="line">#使test文件具有SUID权限，就是在普通文件权限前面再加上这些特殊权限值就可以了</div></pre></td></tr></table></figure>
+<h2 id="通配符和正则表达式"><a href="#通配符和正则表达式" class="headerlink" title="通配符和正则表达式"></a>通配符和正则表达式</h2><p>通配符是系统命令使用，一般用来匹配文件名或者什么的用在系统命令中。而正则表达式是操作字符串，以行尾单位来匹配字符串使用的</p>
+<h2 id="虚拟文件系统"><a href="#虚拟文件系统" class="headerlink" title="虚拟文件系统"></a>虚拟文件系统</h2><h3 id="存在意义"><a href="#存在意义" class="headerlink" title="存在意义"></a>存在意义</h3><ol>
+<li>向上，对应用层提供一个标准的文件操作接口；</li>
+<li>对下，对文件系统提供一个标准的接口，以便其他操作系统的文件系统可以方便的移植到Linux上；</li>
+<li>VFS内部则通过一系列高效的管理机制，比如inode cache, dentry cache 以及文件系统的预读等技术，使得底层文件系统不需沉溺到复杂的内核操作，即可获得高性能；</li>
+<li>此外VFS把一些复杂的操作尽量抽象到VFS内部，使得底层文件系统实现更简单</li>
+</ol>
+<p>VFS通用模型包含以下类型对象:</p>
+<ol>
+<li><p>super block</p>
+<p>存储文件系统相关的信息，对于磁盘文件系统来说，这个对象通常对应磁盘上的一个文件系统控制块（磁盘super block）</p>
+<p><strong>s_root</strong>：指向该具体文件系统安装目录的目录项</p>
+</li>
+<li><p>inode</p>
+<p>存储一个文件相关的信息，对于磁盘文件系统，这个对象通常对应磁盘上的一个文件控制块(磁盘inode)。每一个inode都对应一个编号，可以在文件系统内唯一标识这个文件。</p>
+<p>保存的其实是实际的数据的一些信息，这些信息称为“元数据”(也就是对文件属性的描述)。例如：文件大小，设备标识符，用户标识符，用户组标识符，文件模式，扩展属性，文件读取或修改的时间戳，链接数量，指向存储该内容的磁盘区块的指针，文件分类等等</p>
+<p><strong>i_dentry</strong>：指向目录项链表指针，注意一个inodes可以对应多个dentry，因为一个实际的文件可能被链接到其他的文件，那么就会有另一个dentry，这个链表就是将所有的与本inode有关的dentry都连在一起。</p>
+<p><strong>i_count</strong>：引用计数</p>
+</li>
+<li><p>file</p>
+<p>file是和进程相关的，file代表一个打开的文件，file和inode之间是多对一的关系，因为多个进程可以打开同一个文件，系统会为每一次打开都创建一个file结构。</p>
+<p><strong>f_dentry</strong>：与该文件相关的dentry</p>
+</li>
+<li><p>dentry</p>
+<p>底层文件系统的许多操作严重依赖文件的inode，在进行文件操作前，我们需要根据路径名找到文件对应的inode。我们知道文件系统是树状结构的，因此需要从根目录通过目录树找到要操作的文件或目录，这个遍历过程涉及到磁盘操作，非常耗时。根据局部性原理，很有必要把这个查找过程cache起来，dentry就是为了加快目录遍历操作引入的数据结构。</p>
+<p>目录项是描述文件的逻辑属性，只存在于内存中，并没有实际对应的磁盘上的描述，更确切的说是存在于内存的目录项缓存，为了提高查找性能而设计</p>
+<p><strong>d_inode</strong>：与该目录项关联的inode</p>
+<p>每一个基于磁盘的文件系统，都有特定的方法用来构建目录树。一般来说有两种方式：</p>
+<ol>
+<li>磁盘上保存着目录项</li>
+<li>通过磁盘文件的父子关系重建目录项</li>
+</ol>
+</li>
+</ol>
+<h2 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">iptables -A INPUT -p tcp --dport 22 -j ACCEPT   </div><div class="line">iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT </div><div class="line"></div><div class="line">#允许icmp包通过,也就是允许ping,</div><div class="line">[root@tp ~] iptables -A OUTPUT -p icmp -j ACCEPT (OUTPUT设置成DROP的话)</div><div class="line">[root@tp ~] iptables -A INPUT -p icmp -j ACCEPT  (INPUT设置成DROP的话)</div><div class="line">#允许loopback!(不然会导致DNS无法正常关闭等问题)</div><div class="line">IPTABLES -A INPUT -i lo -p all -j ACCEPT (如果是INPUT DROP)</div><div class="line">IPTABLES -A OUTPUT -o lo -p all -j ACCEPT(如果是OUTPUT DROP)</div><div class="line">#下面写OUTPUT链,OUTPUT链默认规则是ACCEPT,所以我们就写需要DROP(放弃)的链.</div><div class="line">#减少不安全的端口连接</div><div class="line">[root@tp ~] iptables -A OUTPUT -p tcp --sport 31337 -j DROP</div><div class="line">[root@tp ~] iptables -A OUTPUT -p tcp --dport 31337 -j DROP</div><div class="line">#只允许192.168.0.3的机器进行SSH连接</div><div class="line"> iptables -A INPUT -s 192.168.0.3 -p tcp --dport 22 -j ACCEPT</div></pre></td></tr></table></figure>
+<p>iptables执行规则时，是从从规则表中从上至下顺序执行的，如果没遇到匹配的规则，就一条一条往下执行，如果遇到匹配的规则后，那么就执行本规则，执行后根据本规则的动作(accept, reject,log等)，决定下一步执行的情况，后续执行一般有三种情况。</p>
+<ol>
+<li>一种是继续执行当前规则队列内的下一条规则。比如执行过Filter队列内的LOG后，还会执行Filter队列内的下一条规则。</li>
+<li>一种是中止当前规则队列的执行，转到下一条规则队列。比如从执行过accept后就中断Filter队列内其它规则，跳到nat队列规则去执行</li>
+<li>一种是中止所有规则队列的执行。</li>
+</ol>
+<h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><h2 id="shell脚本第一行的意思"><a href="#shell脚本第一行的意思" class="headerlink" title="shell脚本第一行的意思"></a>shell脚本第一行的意思</h2><p>指定解释器位置</p>
+<h2 id="shell内建命令和外部命令的区别"><a href="#shell内建命令和外部命令的区别" class="headerlink" title="shell内建命令和外部命令的区别"></a>shell内建命令和外部命令的区别</h2><ol>
+<li><strong>内部命令</strong>实际上是shell程序的一部分，其中包含的是一些比较简单的linux系统命令，这些命令由shell程序识别并在shell程序内部完成运行，通常在linux系统加载运行时shell就被加载并驻留在系统内存中。内部命令是写在bashy源码里面的，其执行速度比外部命令快，因为解析内部命令shell不需要创建子进程。比如：exit，history，cd，echo等。</li>
+<li><strong>外部命令</strong>是linux系统中的实用程序部分，因为实用程序的功能通常都比较强大，所以其包含的程序量也会很大，在系统加载时并不随系统一起被加载到内存中，而是在需要时才将其调用内存。通常外部命令的实体并不包含在shell中，但是其命令执行过程是由shell程序控制的。shell程序管理外部命令执行的路径查找、加载存放，并控制命令的执行。外部命令是在bash之外额外安装的，通常放在/bin，/usr/bin，/sbin，/usr/sbin……等等。可通过“echo<br>$PATH”命令查看外部命令的存储路径，比如：ls、vi等。</li>
+</ol>
+<p>用type命令可以分辨内部命令与外部命令，先执行内部指令，若要执行的指令不是内部指令，则应是调用的外部指令</p>
+<h2 id="shell捕捉信号"><a href="#shell捕捉信号" class="headerlink" title="shell捕捉信号"></a>shell捕捉信号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">trap commands signals</div><div class="line">#这里的命令可以是任何有效的Linux命令，或一个用户定义的函数，信号可以是任意数量的信号，你想来捕获的列表</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">WORKDIR 值 $$ 所以在前面的例子中，将被取代 trap 命令执行的时间。如果你想这种替代发生在收到信号1或2的时间你可以把单引号内的命令：</div><div class="line">$ trap &apos;rm $WORKDIR/work1$$ $WORKDIR/dataout$$; exit&apos; 1 2</div><div class="line">忽略信号：</div><div class="line">如果陷阱列出的命令是空的，指定的信号接收时，将被忽略。例如，下面的命令：</div><div class="line">$ trap &apos;&apos; 2</div><div class="line">指定的中断信号是被忽略的。你可能要忽略某些信号时进行一些操作，不希望打断。可以指定多个信号被忽略如下：</div><div class="line">$ trap &apos;&apos; 1 2 3 15</div><div class="line">注意，第一个参数必须被指定为一个信号被忽略，而不是相当于写入下面的内容，它具有独立的含义也各有：</div><div class="line">$ trap  2</div><div class="line">如果你忽略了一个信号，所有的子shell也忽略该信号。不过，如果指定要采取的行动在收到的信号，所有的子shell仍然会在收到该信号的默认操作。</div><div class="line">重设陷阱：</div><div class="line">当你改变了默认在收到信号后应采取的动作，你可以改变它回来的陷阱，如果你只是省略第一个参数;</div><div class="line">$ trap 1 2</div><div class="line">复位应采取的动作收到信号1或2 返回默认。</div></pre></td></tr></table></figure>
+<h1 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h1><ul>
+<li><p>多线程调试</p>
+<p>info thread查看当前进程的线程</p>
+<p>thread ID 切换到指定线程</p>
+<p>b file.c:100 打断点</p>
+<p>set scheduler-locking off|on|step，这个是问得最多的。在使用step或者continue命令调试当前被调试线程的时候，其他线程也是同时执行的，怎么只让被调试程序执行呢？通过这个命令就可以实现这个需求。</p>
+<p>off为默认值，所有线程都执行</p>
+<p>on只有当前被调试线程执行</p>
+<p>step在单步调试时，除了next过一个函数外，只有当前线程被执行</p>
+</li>
+<li><p>调试多进程</p>
+<p>gdb调试器的选项follow-fork-mode允许我们选择程序在执行fork系统调用后是继续调试父进程还是调试子进程。 其用法如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set follow-fork-mode mode</div></pre></td></tr></table></figure>
+</li>
+<li><p>调试宏</p>
+<p>gcc中添加-ggdb3</p>
+</li>
+<li><p>调试运行中的程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb progamename pid</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看cpu占用率高的线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps H -eo user,pid,ppid,tid,time,%cpu,cmd --sort=%cpu</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag">#面试</a>
+          
+            <a href="/tags/linux/" rel="tag">#linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/14/C-problem/" rel="next" title="面试问题汇总：C++">
+                <i class="fa fa-chevron-left"></i> 面试问题汇总：C++
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Wanghy" />
+          <p class="site-author-name" itemprop="name">Wanghy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux操作系统"><span class="nav-number">1.</span> <span class="nav-text">Linux操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#软链接和硬链接"><span class="nav-number">1.1.</span> <span class="nav-text">软链接和硬链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc-fstab"><span class="nav-number">1.2.</span> <span class="nav-text">/etc/fstab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUID，SGID和SBIT"><span class="nav-number">1.3.</span> <span class="nav-text">SUID，SGID和SBIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符和正则表达式"><span class="nav-number">1.4.</span> <span class="nav-text">通配符和正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟文件系统"><span class="nav-number">1.5.</span> <span class="nav-text">虚拟文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存在意义"><span class="nav-number">1.5.1.</span> <span class="nav-text">存在意义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iptables"><span class="nav-number">1.6.</span> <span class="nav-text">iptables</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell"><span class="nav-number">2.</span> <span class="nav-text">shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell脚本第一行的意思"><span class="nav-number">2.1.</span> <span class="nav-text">shell脚本第一行的意思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell内建命令和外部命令的区别"><span class="nav-number">2.2.</span> <span class="nav-text">shell内建命令和外部命令的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell捕捉信号"><span class="nav-number">2.3.</span> <span class="nav-text">shell捕捉信号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gdb"><span class="nav-number">3.</span> <span class="nav-text">gdb</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wanghy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

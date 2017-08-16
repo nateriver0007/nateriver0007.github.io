@@ -102,7 +102,7 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
 网络接入层对于OSI的物理层、数据链路层">
 <meta property="og:image" content="http://yoursite.com/images/normal_content_length.png">
 <meta property="og:image" content="http://yoursite.com/images/chunked_code.png">
-<meta property="og:updated_time" content="2017-08-14T09:26:03.488Z">
+<meta property="og:updated_time" content="2017-08-16T02:31:25.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试问题汇总：网络协议相关">
 <meta name="twitter:description" content="OSI参考模型物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
@@ -324,6 +324,8 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
 <p><strong>CLOSE_WAIT</strong>: 这种状态的含义其实是表示在等待关闭。怎么理解呢?当对方close一个SOCKET后发送FIN报文给自己，你系统毫无疑问地会回应一个ACK报文给对方，此时则进入到CLOSE_WAIT状态。接下来呢，实际上你真正需要考虑的事情是察看你是否还有数据发送给对方，如果没有的话，那么你也就可以close这个SOCKET，发送FIN报文给对方，也即关闭连接。所以你在CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。(被动方)</p>
 <p><strong>LAST_ACK</strong>: 这个状态还是比较容易好理解的，它是被动关闭一方在发送FIN报文后，最后等待对方的ACK报文。当收到ACK报文后，也即可以进入到CLOSED可用状态了。(被动方)</p>
 <h2 id="TCP乱序重组"><a href="#TCP乱序重组" class="headerlink" title="TCP乱序重组"></a>TCP乱序重组</h2><p>TCP具有乱序重组的功能。<br>（1）TCP具有缓冲区<br>（2）TCP报文具有序列号<br>所以，一种常见的处理方式是：TCP会先将报文段3缓存下来，当报文段2到达时，再根据序列号进行拼接。<br>当然缓冲区也有满的时候，这时接收端会直接丢弃报文，不做任何其他处理；<br>发送方的定时器发现迟迟收不到接收方丢弃报文的确认号（ack number），就会重传该报文。这就是TCP的超时重传功能</p>
+<h2 id="MTU和MSS"><a href="#MTU和MSS" class="headerlink" title="MTU和MSS"></a>MTU和MSS</h2><p>MTU：maximum transmission unit，最大传输单元，由硬件规定，如以太网的MTU为1500字节。</p>
+<p>MSS：maximum segment size，最大分节大小，为TCP数据包每次传输的最大数据分段大小，一般由发送端向对端TCP通知对端在每个分节中能发送的最大TCP数据。MSS值为MTU值减去IPv4 Header（20 Byte）和TCP header（20 Byte）得到。</p>
 <h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><h3 id="chunked编码"><a href="#chunked编码" class="headerlink" title="chunked编码"></a>chunked编码</h3><p> 一般情况HTTP的Header包含Content-Length域来指明报文体的长度，如：</p>
 <p><img src="/images/normal_content_length.png" alt=""></p>
 <p>有时候服务生成HTTP回应是无法确定消息大小的，比如大文件的下载，或者后台需要复杂的逻辑才能全部处理页面的请求，这时用需要实时生成消息长度，服务器一般使用chunked编码。</p>
@@ -378,6 +380,7 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
 </ul>
 <h3 id="主动模式与被动模式区别总结"><a href="#主动模式与被动模式区别总结" class="headerlink" title="主动模式与被动模式区别总结"></a>主动模式与被动模式区别总结</h3><p>主动模式：server把数据写到client上面 （server从server的20端口把数据写到client开的端口上）</p>
 <p>被动模式：client去server端把数据取回来 （client要求server开一个端口，然后client从那个端口把数据取回来）</p>
+<h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>根IP地址获取物理地址的一个TCP/IP协议</p>
 
       
     </div>
@@ -422,6 +425,10 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/14/C-problem/" rel="prev" title="面试问题汇总：C++">
+                面试问题汇总：C++ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -489,7 +496,7 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -499,7 +506,7 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -528,7 +535,7 @@ TCP/IP 参考模型网络访问层、网际互联层、传输层、和应用层
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">1.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-参考模型"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP 参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与OSI参考模型的对应关系"><span class="nav-number">2.1.</span> <span class="nav-text">与OSI参考模型的对应关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP协议"><span class="nav-number"></span> <span class="nav-text">TCP/IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">1.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#握手过程中各状态"><span class="nav-number">1.1.</span> <span class="nav-text">握手过程中各状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">2.</span> <span class="nav-text">四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挥手过程中各状态"><span class="nav-number">2.1.</span> <span class="nav-text">挥手过程中各状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP乱序重组"><span class="nav-number">3.</span> <span class="nav-text">TCP乱序重组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议"><span class="nav-number">4.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chunked编码"><span class="nav-number">4.1.</span> <span class="nav-text">chunked编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口"><span class="nav-number">4.2.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP断点续传原理"><span class="nav-number">4.3.</span> <span class="nav-text">HTTP断点续传原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#续传时服务器源文件已经发生修改"><span class="nav-number">4.3.1.</span> <span class="nav-text">续传时服务器源文件已经发生修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP2-0与HTTP1-1的区别"><span class="nav-number">4.4.</span> <span class="nav-text">HTTP2.0与HTTP1.1的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HTTP方法"><span class="nav-number">4.5.</span> <span class="nav-text">常用HTTP方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET方法与POST方法区别"><span class="nav-number">4.6.</span> <span class="nav-text">GET方法与POST方法区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP协议"><span class="nav-number">5.</span> <span class="nav-text">FTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主动模式"><span class="nav-number">5.1.</span> <span class="nav-text">主动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">5.2.</span> <span class="nav-text">被动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主动模式与被动模式区别总结"><span class="nav-number">5.3.</span> <span class="nav-text">主动模式与被动模式区别总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">1.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP-参考模型"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP 参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与OSI参考模型的对应关系"><span class="nav-number">2.1.</span> <span class="nav-text">与OSI参考模型的对应关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP协议"><span class="nav-number"></span> <span class="nav-text">TCP/IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">1.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#握手过程中各状态"><span class="nav-number">1.1.</span> <span class="nav-text">握手过程中各状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">2.</span> <span class="nav-text">四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挥手过程中各状态"><span class="nav-number">2.1.</span> <span class="nav-text">挥手过程中各状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP乱序重组"><span class="nav-number">3.</span> <span class="nav-text">TCP乱序重组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MTU和MSS"><span class="nav-number">4.</span> <span class="nav-text">MTU和MSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP协议"><span class="nav-number">5.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chunked编码"><span class="nav-number">5.1.</span> <span class="nav-text">chunked编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口"><span class="nav-number">5.2.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP断点续传原理"><span class="nav-number">5.3.</span> <span class="nav-text">HTTP断点续传原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#续传时服务器源文件已经发生修改"><span class="nav-number">5.3.1.</span> <span class="nav-text">续传时服务器源文件已经发生修改</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP2-0与HTTP1-1的区别"><span class="nav-number">5.4.</span> <span class="nav-text">HTTP2.0与HTTP1.1的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用HTTP方法"><span class="nav-number">5.5.</span> <span class="nav-text">常用HTTP方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET方法与POST方法区别"><span class="nav-number">5.6.</span> <span class="nav-text">GET方法与POST方法区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP协议"><span class="nav-number">6.</span> <span class="nav-text">FTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主动模式"><span class="nav-number">6.1.</span> <span class="nav-text">主动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">6.2.</span> <span class="nav-text">被动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主动模式与被动模式区别总结"><span class="nav-number">6.3.</span> <span class="nav-text">主动模式与被动模式区别总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP协议"><span class="nav-number">7.</span> <span class="nav-text">ARP协议</span></a></li></ol></div>
             
           </div>
         </section>

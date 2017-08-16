@@ -1,0 +1,826 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C++,面试," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="C/C++基础知识
+指针（*）、引用（&amp;amp;）、解引用（*）、取地址（&amp;amp;）、的概念和区别
+指针指向一块内存，指针保存的是内存的地址；引用是变量的别名，本质是引用该变量的地址。
+解引用是取指针指向的地址的内容，取地址是获得变量在内存中的地址
+区别：
+（1）引用使用是无需解引用，指针需解引用。
+（2）引用不能为空，指针可以为空。
+（3）引用在定义时被初始化一次，之后不可变；指针指向的值和本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试问题汇总：C++">
+<meta property="og:url" content="http://yoursite.com/2017/08/14/C-problem/index.html">
+<meta property="og:site_name" content="Wanghy's Blog">
+<meta property="og:description" content="C/C++基础知识
+指针（*）、引用（&amp;amp;）、解引用（*）、取地址（&amp;amp;）、的概念和区别
+指针指向一块内存，指针保存的是内存的地址；引用是变量的别名，本质是引用该变量的地址。
+解引用是取指针指向的地址的内容，取地址是获得变量在内存中的地址
+区别：
+（1）引用使用是无需解引用，指针需解引用。
+（2）引用不能为空，指针可以为空。
+（3）引用在定义时被初始化一次，之后不可变；指针指向的值和本">
+<meta property="og:updated_time" content="2017-08-15T07:32:30.163Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试问题汇总：C++">
+<meta name="twitter:description" content="C/C++基础知识
+指针（*）、引用（&amp;amp;）、解引用（*）、取地址（&amp;amp;）、的概念和区别
+指针指向一块内存，指针保存的是内存的地址；引用是变量的别名，本质是引用该变量的地址。
+解引用是取指针指向的地址的内容，取地址是获得变量在内存中的地址
+区别：
+（1）引用使用是无需解引用，指针需解引用。
+（2）引用不能为空，指针可以为空。
+（3）引用在定义时被初始化一次，之后不可变；指针指向的值和本">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/14/C-problem/"/>
+
+
+  <title> 面试问题汇总：C++ | Wanghy's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Wanghy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Keep Moving</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试问题汇总：C++
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-14T17:30:26+08:00" content="2017-08-14">
+              2017-08-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="C-C-基础知识"><a href="#C-C-基础知识" class="headerlink" title="C/C++基础知识"></a>C/C++基础知识</h1><ul>
+<li><p><strong>指针（*）、引用（&amp;）、解引用（*）、取地址（&amp;）、的概念和区别</strong></p>
+<p>指针指向一块内存，指针保存的是内存的地址；引用是变量的别名，本质是引用该变量的地址。</p>
+<p>解引用是取指针指向的地址的内容，取地址是获得变量在内存中的地址</p>
+<p>区别：</p>
+<p>（1）引用使用是无需解引用，指针需解引用。</p>
+<p>（2）引用不能为空，指针可以为空。</p>
+<p>（3）引用在定义时被初始化一次，之后不可变；指针指向的值和本身的值是可变的，也就是说指针只是一块地址，地址里的东西可变。</p>
+<p>（4）程序会给指针变量分配内存区域，而引用不需要分配内存区域</p>
+<a id="more"></a>
+</li>
+</ul>
+<ul>
+<li><p><strong>memset、memcpy和strcpy的区别</strong></p>
+<p>memcpy是内存拷贝函数，可以拷贝任何数据类型的对象，例如memcpy(b, a, sizeof(b))。</p>
+<p>strcpy只能拷贝字符串，遇到’\0′结束拷贝。</p>
+<p>memset用来对一段内存空间全部设置为某个字符，例如:char a[100];memset(a, ‘’, sizeof(a))。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>struct和class的区别</strong></p>
+<p>（1）在默认情况下,struct的成员变量是公共(public)的；在默认情况下，class的成员变量是私有(private)的。</p>
+<p>（2）struct保证成员按照声明顺序在内存中存储。class不能保证。</p>
+<p>（3）对于继承来说，class默认是private继承，struct默认是public继承。</p>
+</li>
+<li><p><strong>struct和union的区别</strong></p>
+<p>（1）一个union类型的变量，所有成员变量共享一块内存，该内存的大小有这些成员变量中长度最大的一个来决定，struct中成员变量内存都是独立的。</p>
+<p>（2）union分配的内存是连续的，而struct不能保证分配的内存是连续的。因此，对于union的一个成员赋值, 那么其它成员会重写，而struct则不会</p>
+</li>
+<li><p><strong>const与#define的概念和优缺点</strong></p>
+<p>（1）  const常量有数据类型，而宏常量没有数据类型。编译器可以对前者进行类型安全检查。而对后者只进行字符替换，没有类型安全检查，并且在字符替换可能会产生意料不到的错误（边际效应）。</p>
+<p>（2）  有些集成化的调试工具可以对const常量进行调试，但是不能对宏常量进行调试。</p>
+</li>
+<li><p><strong>指针在16位机、32位机、64位机分别占用多少个字节</strong></p>
+<p>16位机–2字节、32位机–4字节、64位机–8字节</p>
+</li>
+<li><p><strong>对于一个频繁使用的短小函数,在C语言中应用什么实现,在C++中应用什么实现</strong></p>
+<p>C用宏定义，C++用inline</p>
+</li>
+<li><p><strong>main 函数执行以前，会执行什么代码</strong></p>
+<p>全局对象的构造函数会在main 函数之前执行，比如int a；初始化为0</p>
+</li>
+<li><p><strong>局部变量能否和全局变量重名</strong></p>
+<p>可以，但是局部会屏蔽全局。要用全局变量，需要使用域作用符“::”。</p>
+</li>
+<li><p><strong>描述内存分配方式以及它们的区别</strong></p>
+<ol>
+<li>从静态存储区域分配。该存储区域在程序编译的时候就已经分配好了，这块内存在程序的整个运行期间都存在。例如全局变量，static 变量。</li>
+<li>在栈上创建。在执行函数时，函数的局部变量存储在该区域，函数执行结束时会释放该存储空间。栈内存分配运算内置于处理器的指令集。</li>
+<li>从堆上分配，亦称动态内存分配。程序在运行的时候用malloc 或new 申请任意多少的内存，程序员自己负责在何时用free 或delete 释放内存。     动态内存的生存期由程序员决定，使用非常灵活。</li>
+</ol>
+</li>
+<li><p><strong>static关键字</strong></p>
+<p>编译器为局部变量在栈上分配空间，但是函数执行结束时会释放掉。所以static可以解决函数执行完后变量值被释放的问题，static变量存储在静态存储区。</p>
+<p>缺点：不安全，因为作用域是全局的。</p>
+<p>优点：因为静态变量对所有对象所公有的，可以节省内存，提高时间效率</p>
+<p>（1）可以用于全局变量的定义：为该变量分配静态存储区。程序运行结束前不会被释放。<br>（2）声明和定义静态成员函数：表示该函数为静态函数，只能在本文件中被调用。<br>（3）定义静态局部变量：只被初始化一次，只有程序运行结束才会释放。区别是作用域的范围。</p>
+<p>（4）类数据成员：某个数据成员声明为static时，该静态数据成员只能被定义一次，而且要被同类的所有对象共享。各个对象都拥有类中每一个普通数据成员的副本，但静态数据成员只有一个实例存在，与定义了多少类对象无关</p>
+<p>（5）类成员函数：静态方法就是与该类相关的，是类的一种行为，而不是与该类的实例对象相关</p>
+</li>
+<li><p><strong>堆栈溢出的原因</strong></p>
+<p>栈溢出：</p>
+<p>一般都是由越界访问导致的。例如局部变量数组越界访问或者函数内局部变量使用过多，超出了操作系统为该进程分配的栈的大小。</p>
+<p>堆溢出：</p>
+<p>由于堆是用户申请的，所以溢出的原因可能是程序员申请了资源但是忘记释放了。</p>
+</li>
+<li><p><strong>刷新缓冲区方式</strong></p>
+<p>换行刷新缓冲区：printf(“\n”);</p>
+<p>程序结束刷新缓冲区：return 0;</p>
+</li>
+<li><p><strong>什么是内存泄露？C++内存泄漏检测</strong></p>
+<p>内存泄露是指程序中动态分配了内存，但是在程序结束时没有释放这部分内存,从而造成那一部分内存不可用的情况</p>
+<p>有一些内存泄漏的检测工具，比如BoundsChecker。</p>
+<p>静态内存泄漏通过工具或者仔细检查代码找到泄漏点。</p>
+<p>动态的内存泄漏很难查，一般通过在代码中加断点跟踪和Run-Time内存检测工具来查找。</p>
+<p>内存泄漏的检测可以分以下几个步骤：</p>
+<p>（1）看代码new之后是否delete，就是申请了静态内存用完是否释放。看析构函数是否真的执行，如果没有真正执行，就需要动态释放对象；</p>
+<p>（2）让程序长时间运行，看任务管理器对应程序内存是不是一直向上增加；</p>
+<p>（3）使用常用内存泄漏检测工具来检测内存泄漏点</p>
+</li>
+<li><p>malloc和new的区别</p>
+<ol>
+<li>malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。它们都可用于申请动态内存和释放内存。</li>
+<li>对于非内部数据类型的对象而言，光用maloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。 </li>
+<li>因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以一个能完成清理与释放内存工作的运算符delete。注意new/delete不是库函数而是运算符。</li>
+<li>C++程序经常要调用C函数，而C程序只能用malloc/free管理动态内存。</li>
+<li>new可以认为是malloc加构造函数的执行。new出来的指针是直接带类型信息的。而malloc返回的都是void指针。</li>
+</ol>
+</li>
+<li><p><strong>delete与 delete []区别</strong></p>
+<p>都是用来调用析构函数的：</p>
+<p>（1）delete只会调用一次析构函数，delete[]会调用每一个成员的析构函数。</p>
+<p>（2）delete与new配套，delete []与new []配套，用new分配的内存用delete删除用new[]分配的内存用delete[]删除</p>
+</li>
+<li><p><strong>什么是“野指针”</strong></p>
+<p>野指针指向一个已删除的对象或无意义地址的指针。与空指针不同，野指针无法通过简单地判断是否为 NULL避免，而只能通过养成良好的编程习惯来尽力避免。</p>
+<p>造成的主要原因是：指针变量没有被初始化，或者指针p被free或者delete之后，没有置为NULL。</p>
+</li>
+<li><p><strong>常量指针和指针常量的区别</strong></p>
+<p>常量指针：是一个指向常量的指针。可以防止对指针误操作而修改该常量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p;</div><div class="line"><span class="keyword">int</span> <span class="keyword">const</span> *p;</div></pre></td></tr></table></figure>
+<p>指针常量：是一个常量，且是一个指针。指针常量不能修改指针所指向的地址，一旦初始化，地址就固定了，不能对它进行移动操作。但是指针常量的内容是可以改变。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a;</div><div class="line"><span class="keyword">int</span> *<span class="keyword">const</span> b = &amp;a; <span class="comment">//const放在指针声明操作符的右侧</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>*p++ 自增p 还是p 所指向的变量</strong></p>
+<p>*p++ 和*(p++) 等价。要自增p 指向的值, 使用(*p)++, 或者++*p。</p>
+</li>
+</ul>
+<h1 id="类相关知识"><a href="#类相关知识" class="headerlink" title="类相关知识"></a>类相关知识</h1><ul>
+<li><p><strong>类的成员函数重载、覆盖和隐藏的概念和区别</strong></p>
+<p><strong>重载</strong>：在同一个作用域内，有几个同名的函数，但是参数列表的个数和类型不同。</p>
+<p><strong>函数覆盖</strong>：派生类函数覆盖基类函数，函数名、参数类型、返回值类型一模一样。派生类的对象会调用子类中的覆盖版本，覆盖父类中的函数版本。</p>
+<p><strong>隐藏</strong>：派生类的函数屏蔽了与其同名的基类函数。</p>
+<p><strong>覆盖和重载的区别</strong> ：函数是否处在不同的作用域，参数列表是否一样；基类函数是否有virtual关键字。</p>
+<p><strong>隐藏和覆盖的区别</strong> ：</p>
+<p>（1）派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual关键字，基类的函数将被隐藏。</p>
+<p>（2）派生类的函数与基类的函数同名，参数也相同，但是基类函数没有virtual 关键字。此时，基类的函数被隐藏有virtual，就是覆盖。</p>
+</li>
+<li><p><strong>构造函数和析构函数的调用次序</strong></p>
+<p>构造函数：先父类后子类</p>
+<p>析构函数：先子类后父类</p>
+</li>
+<li><p><strong>C++纯虚函数,虚函数，虚函数的实现,什么是虚指针</strong></p>
+<p><strong>纯虚函数</strong>:基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>=<span class="number">0</span>;<span class="comment">//是一个接口，子类必须实现这个接口</span></div></pre></td></tr></table></figure>
+<p><strong>虚指针或虚函数指针</strong>:虚函数的实现细节。带有虚函数的每一个对象都有一个虚指针指向该类的虚函数表。</p>
+<p><strong>虚函数</strong>:虚函数是在基类中被声明为virtual，并在派生类中重新定义的成员函数，可实现成员函数的动态覆盖（Override），纯虚函数和虚函数的区别是，纯虚函数子类必须实现</p>
+<p><strong>抽象类</strong>:包含纯虚函数的类称为抽象类。由于抽象类包含了没有定义的纯虚函数，所以不能定义抽象类的对象</p>
+</li>
+<li><p><strong>虚函数与构造函数，析构函数的关系</strong></p>
+<p><strong>基类析构函数是虚函数</strong>:编译器总是根据类型来调用类成员函数。但是一个派生类的指针可以安全地转化为一个基类的指针。这样删除一个基类的指针的时候，C++不管这个指针指向一个基类对象还是一个派生类的对象，调用的都是基类的析构函数而不是派生类的。如果你依赖于派生类的析构函数的代码来释放资源，而没有重载析构函数，那么会有资源泄漏</p>
+<p><strong>构造函数不能为虚函数</strong>:虚函数采用一种虚调用的方法。需调用是一种可以在只有部分信息的情况下工作的机制。如果创建一个对象，则需要知道对象的准确类型，因此构造函数不能为虚函数</p>
+</li>
+<li><p><strong>面向对象的三个基本特征</strong></p>
+<ol>
+<li>封装：将客观事物抽象成类，每个类对自身的数据和方法。封装可以使得代码模块化，目的是为了代码重用</li>
+<li>继承：子类继承父类的方法和属性，继承可以扩展已存在的代码，目的是为了代码重用</li>
+<li>多态：允许将子类类型的指针赋值给父类类型的指针</li>
+</ol>
+</li>
+<li><p><strong>拷贝构造函数相关问题，深拷贝，浅拷贝，临时对象等</strong></p>
+<p>深拷贝意味着拷贝了资源和指针，而浅拷贝只是拷贝了指针，没有拷贝资源<br>这样使得两个指针指向同一份资源，可能造成对同一份析构两次，程序崩溃。而且浪费时间，并且不安全。<br>临时对象的开销比局部对象小些。</p>
+</li>
+<li><p><strong>面向对象如何实现数据隐藏</strong></p>
+<p>通过定义类来实现数据隐藏：</p>
+<p>成员函数和属性的类型：私有成员private，保护成员protected，公共成员public</p>
+</li>
+<li><p><strong>虚函数表</strong></p>
+<p>虚函数是通过一张虚函数表来实现的。就像一个地图一样，指明了实际所应该调用的函数的地址。</p>
+</li>
+<li><p>类的大小如何确定</p>
+<p>（1）在一个C++类中，如果什么都没有，则这个类只占有1个字节；<strong>说明：如果一个类中没有任何数据成员，则这个类实际上是不占用存储空间的，size = 0;但是0不好在内存中定义一个地址，所以我们就人为的规定了大小为0的一个对象所占的存储空间的大小为1。</strong></p>
+<p>（2）一旦这个类中有其他的一些数据成员，比如说一个 int data ；那么这个类的大小就为 4 个字节，而不是5个字节，上述的一个字节不计算在内；</p>
+<p>（3）普通的成员函数是不占用空间的，所以一个只用普通函数的类的大小只占有 1 个字节。<strong>说明：普通成员函数是类的所有对象所通用的方法，不算做对象的成员，所以不能算在对象的存储空间内。</strong></p>
+<p>（4）对于有虚函数的类，因为要存在一个虚函数表，需要4个字节，（<strong>是一个数组指针vptr，数组中存储的是虚函数的函数指针的地址</strong>），这个指向虚函数表的指针占用4个字节的存储空间。</p>
+<p>（5）注意将数据对齐考虑进去，如一个类中含有 虚函数 和  一个char型数据，sizeof(class) = 8 ；默认对齐是 4字节对齐</p>
+</li>
+</ul>
+<h1 id="STL相关"><a href="#STL相关" class="headerlink" title="STL相关"></a>STL相关</h1><ul>
+<li><p>vector</p>
+<p>vector是一个能够存放任意类型的动态数组，能够增加和压缩数据</p>
+<p>vector 包含着一系列连续存储的元素,其行为和数组类似。访问vector中的任意元素或从末尾添加元素都可以在常量级时间复杂度内完成，而查找特定值的元素所处的位置或是在vector中插入元素则是线性时间复杂度。</p>
+</li>
+<li><p>list</p>
+<p>list容器就是一个双向链表,可以高效地进行插入删除元素</p>
+</li>
+<li><p>deque</p>
+<p>deque双向队列是一种双向开口的连续线性空间，可以高效的在头尾两端插入和删除元素</p>
+<p><strong>list,vector,deque的区别和选择</strong>:</p>
+<p>vector拥有一段连续的内存空间，并且起始地址不变，因此它能非常好的支持随即存取，即[]操作符，但由于它的内存空间是连续的，所以在中间进行插入和删除会造成内存块的拷贝，另外，当该数组后的内存空间不够时，需要重新申请一块足够大的内存并进行内存的拷贝。这些都大大影响了vector的效率。</p>
+<p>list就是数据结构中的双向链表，因此它的内存空间可以是不连续的，通过指针来进行数据的访问，这个特点使得它的随即存取变的非常没有效率，因此它没有提供[]操作符的重载。但由于链表的特点，它可以以很好的效率支持任意地方的删除和插入。</p>
+<p>deque具有以下两个特点：<br>它支持[]操作符，也就是支持随即存取，并且和vector的效率相差无几，它支持在两端的操作：push_back,push_front,pop_back,pop_front等，并且在两端操作上与list的效率也差不多。</p>
+<ol>
+<li>如果你需要高效的随机存取，而不在乎插入和删除的效率，使用vector</li>
+<li>如果你需要大量的插入和删除，而不关心随机存取，则应使用list</li>
+<li>如果你需要随即存取，而且关心两端数据的插入和删除，则应使用deque。</li>
+</ol>
+</li>
+<li><p>map</p>
+<p>从map中删除元素要注意的问题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(ITER iter=mapTest.begin();iter!=mapTest.end();++iter)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">":"</span>&lt;&lt;iter-&gt;second&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  mapTest.erase(iter);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*这是一种错误的写法,会导致程序行为不可知.究其原因是map 是关联容器,对于关联容器来说，如果某一个元素已经被删除，那么其对应的迭代器就失效了，不应该再被使用；否则会导致程序无定义的行为。</span></div><div class="line">可以用以下方法解决这问题:</div><div class="line">正确的写法</div><div class="line">1.使用删除之前的迭代器定位下一个元素。STL建议的使用方式</div><div class="line">*/</div><div class="line"><span class="keyword">for</span>(ITER iter=mapTest.begin();iter!=mapTest.end();)</div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">":"</span>&lt;&lt;iter-&gt;second&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  mapTest.erase(iter++);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="QT"><a href="#QT" class="headerlink" title="QT"></a>QT</h1><h2 id="信号和槽"><a href="#信号和槽" class="headerlink" title="信号和槽"></a>信号和槽</h2><ul>
+<li><strong>信号</strong></li>
+</ul>
+<p>当对象改变其状态时，信号就由该对象发射 (emit) 出去，而且对象只负责发送信号，它不知道另一端是谁在接收这个信号。这样就做到了真正的信息封装，能确保对象被当作一个真正的软件组件来使用。</p>
+<ul>
+<li><strong>槽</strong></li>
+</ul>
+<p>用于接收信号，而且槽只是普通的对象成员函数。一个槽并不知道是否有任何信号与自己相连接。而且对象并不了解具体的通信机制。</p>
+<ul>
+<li><strong>信号与槽的连接</strong></li>
+</ul>
+<p>所有从 QObject 或其子类 ( 例如 Qwidget ) 派生的类都能够包含信号和槽。因为信号与槽的连接是通过 QObject 的 connect() 成员函数来实现的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">connect(sender, SIGNAL(signal), receiver, SLOT(slot));</div></pre></td></tr></table></figure>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>一个信号可以连接多个槽**</li>
+</ul>
+<p>当信号发射时，会以<strong>不确定的顺序</strong>一个接一个的调用各个槽。</p>
+<ul>
+<li><strong>多个信号可以连接同一个槽</strong></li>
+</ul>
+<p>即无论是哪一个信号被发射，都会调用这个槽。</p>
+<ul>
+<li><strong>信号直接可以相互连接</strong></li>
+</ul>
+<p>发射第一个信号时，也会发射第二个信号。</p>
+<ul>
+<li><strong>连接可以被移除</strong></li>
+</ul>
+<p>这种情况用得比较少，因为在对象被删除时，Qt会自动移除与这个对象相关的所有连接。语法如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">disconnect(sender, SIGNAL(signal), receiver, SLOT(slot));</div></pre></td></tr></table></figure>
+<h3 id="应该注意的问题"><a href="#应该注意的问题" class="headerlink" title="应该注意的问题"></a>应该注意的问题</h3><ol>
+<li>信号与槽机制与普通函数的调用一样，如果使用不当的话，在程序执行时也有可能产生死循环。因此，在定义槽函数时一定要注意避免间接形成无限循环，即在槽中再次发射所接收到的同样信号。例如 , 在前面给出的例子中如果在 mySlot() 槽函数中加上语句 emit mySignal() 即可形成死循环。</li>
+<li>如果一个信号与多个槽相联系的话，那么，当这个信号被发射时，与之相关的槽被激活的顺序将是随机的。</li>
+<li>宏定义不能用在 signal 和 slot 的参数中。</li>
+<li>信号和槽的参数个数与类型必须一致。</li>
+</ol>
+<h2 id="QT内存管理机制"><a href="#QT内存管理机制" class="headerlink" title="QT内存管理机制"></a>QT内存管理机制</h2><p>在QT的程序中经常会看到只有new而不delete的情况，其实是因为QT有一套回收内存的机制，主要的规则如下：</p>
+<ol>
+<li>所有继承自QOBJECT类的类，如果在new的时候指定了父亲，那么它的清理时在父亲被delete的时候delete的，所以如果一个程序中，所有的QOBJECT类都指定了父亲，那么他们是会一级级的在最上面的父亲清理时被清理，而不用自己清理；</li>
+<li>程序通常最上层会有一个根的QOBJECT，就是放在setCentralWidget（）中的那个QOBJECT，这个QOBJECT在 new的时候不必指定它的父亲，因为这个语句将设定它的父亲为总的QAPPLICATION，当整个QAPPLICATION没有时它就自动清理，所以也 无需清理。9这里QT4和QT3有不同，QT3中用的是setmainwidget函数，但是这个函数不作为里面QOBJECT的父亲，所以QT3中这个 顶层的QOBJECT要自行销毁）。</li>
+<li>这是有人可能会问那如果我自行delete掉这些QT接管负责销毁的指针了会出现什么情况呢，如果时这样的话，正常情况下QT的拥有这个对象的 那个父亲会知道这件事情，它会直到它的儿子被你直接DELETE了，这样它会将这个儿子移出它的列表，并且重新构建显示内容，但是直接这样做时有风险的！ 也就是要说的下一条</li>
+<li>当一个QOBJECT正在接受事件队列时如果中途被你DELETE掉了，就是出现问题了，所以QT中建议大家不要直接DELETE掉一个 QOBJECT，如果一定要这样做，要使用QOBJECT的deleteLater()函数，它会让所有事件都发送完一切处理好后马上清除这片内存，而且 就算调用多次的deletelater也不会有问题。</li>
+<li>QT不建议在一个QOBJECT的父亲的范围之外持有对这个QOBJECT的指针，因为如果这样外面的指针很可能不会察觉这个QOBJECT被释放，会出现错误，如果一定要这样，就要记 住你在哪这样做了，然后抓住那个被你违规使用的QOBJECT的destroyed（）信号，当它没有时赶快置零你的外部指针。当然我认为这样做是及其麻 烦也不符合高效率编程规范的，所以如果要这样在外部持有QOBJECT的指针，建议使用引用或者用智能指针，如QT就提供了智能指针针对这些情况，见最后 一条。</li>
+<li>QT中的智能指针封装为QPointer类，所有QOBJECT的子类都可以用这个智能指针来包装，很多用法与普通指针一样，可以详见QT assistant通过调查这个QT的内存管理功能，发现了很多东西，现在觉得虽然这个QT弄的有点小复杂，但是使用起来还是很方便的，最后要说的是某些内存泄露的检测工具会认为QT的程序因为这种方式存在内存泄露，发现时大可不必理会。</li>
+</ol>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
+<li><p>内存池</p>
+<p>内存池则是在真正使用内存之前，先申请分配一定数量的、大小相等(一般情况下)的内存块留作备用。当有新的内存需求时，就从内存池中分出一部分内存块，若内存块不够再继续申请新的内存。这样做的一个显著优点是，使得内存分配效率得到提升。</p>
+<p>​</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag">#C++</a>
+          
+            <a href="/tags/面试/" rel="tag">#面试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/11/tcpip-problem/" rel="next" title="面试问题汇总：网络协议相关">
+                <i class="fa fa-chevron-left"></i> 面试问题汇总：网络协议相关
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/15/linux-problem/" rel="prev" title="面试问题汇总：Linux相关">
+                面试问题汇总：Linux相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Wanghy" />
+          <p class="site-author-name" itemprop="name">Wanghy</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-C-基础知识"><span class="nav-number">1.</span> <span class="nav-text">C/C++基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类相关知识"><span class="nav-number">2.</span> <span class="nav-text">类相关知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STL相关"><span class="nav-number">3.</span> <span class="nav-text">STL相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QT"><span class="nav-number">4.</span> <span class="nav-text">QT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信号和槽"><span class="nav-number">4.1.</span> <span class="nav-text">信号和槽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">4.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应该注意的问题"><span class="nav-number">4.1.2.</span> <span class="nav-text">应该注意的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT内存管理机制"><span class="nav-number">4.2.</span> <span class="nav-text">QT内存管理机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wanghy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
